@@ -16,7 +16,7 @@ before_script:
 build the app:
   stage: build
   script:
-    - npm run build
+    - npm run generate
   artifacts:
     paths:
       - ./dist
