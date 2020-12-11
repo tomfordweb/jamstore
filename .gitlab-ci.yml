@@ -32,6 +32,5 @@ cypress tests:
   script:
     - npm install cypress
     - npm install -g wait-on
-    - npm run generate
     - npm run start -- --port 3333  & wait-on http://localhost:3333
     - ./node_modules/.bin/cypress run 
