@@ -31,6 +31,8 @@ cypress tests:
   image: docker:19.03.12
   services:
     - docker:19.03.12-dind
+  before_script:
+    - ''
   stage: test
   script:
     - sed -i 's/%CYPRESS_DOMAIN%/$CYPRESS_DOMAIN' ./cypress.json
