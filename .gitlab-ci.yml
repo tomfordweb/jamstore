@@ -2,16 +2,19 @@ image: node
 
 cache:
   key: $CI_COMMIT_REF_SLUG
+  policy: pull
   paths:
     - .npm/
 
 stages:
+  - prep
   - build
   - test
 
-before_script:
-  - npm ci --cache .npm --prefer-offline
-
+generate dependancies:
+  stage: prep
+  script:
+    - npm ci --cache .npm --prefer-offline
 
 build the app:
   stage: build
@@ -22,3 +25,12 @@ unit tests:
   stage: test
   script:
     - npm run test
+
+
+cypress tests:
+  stage: test
+  script:
+    - npm install cypress
+    - npm install -g wait-on
+    - npm run dev & wait-on http://localhost:3000
+    - cypress run 
