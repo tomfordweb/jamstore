@@ -2,7 +2,6 @@ image: node
 
 cache:
   key: $CI_COMMIT_REF_SLUG
-  policy: pull
   paths:
     - .npm/
 
@@ -13,9 +12,6 @@ stages:
 
 generate dependancies:
   stage: prep
-  cache:
-    policy: push
-    key: $CI_COMMIT_REF_SLUG
   script:
     - npm ci --cache .npm --prefer-offline
 
