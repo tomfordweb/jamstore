@@ -28,9 +28,15 @@ unit tests:
 
 
 cypress tests:
+  image: docker:19.03.12
+  services:
+    - docker:19.03.12-dind
   stage: test
   script:
-    - npm install cypress
-    - npm install -g wait-on
-    - npm run start -- --port 3000  & wait-on http://localhost:3000
-    - ./node_modules/.bin/cypress run 
+    - sed -i 's/%CYPRESS_DOMAIN%/$CYPRESS_DOMAIN' ./cypress.json
+    - sed -i 's/%CYPRESS_PORT%/$CYPRESS_PORT' ./cypress.json
+    - docker network create --subnet=172.18.0.0/16 testnet
+    - docker build -t cypress/test .
+    - docker run -d --net testnet --ip $CYPRESS_DOMAIN -p $CYPRESS_PORT:$CYPRESS_PORT
+    - docker run -it -v $(pwd):/e2e -w /e2e cypress/included:3.2.0
+
