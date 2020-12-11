@@ -38,7 +38,7 @@ cypress tests:
     - sed -i 's/%CYPRESS_DOMAIN%/$CYPRESS_DOMAIN/' ./cypress.json
     - sed -i 's/%CYPRESS_PORT%/$CYPRESS_PORT/' ./cypress.json
     - docker network create --subnet=172.18.0.0/16 testnet
-    - docker build -t cypress/test .
-    - docker run -d --net testnet --ip $CYPRESS_DOMAIN -p $CYPRESS_PORT:$CYPRESS_PORT
+    - docker build -t cypresstest .
+    - docker run -d cypresstest
     - docker run -it -v $(pwd):/e2e -w /e2e cypress/included:3.2.0
 
