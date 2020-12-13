@@ -47,5 +47,6 @@ cypress tests:
     - docker build -t cypresstest .
     - docker pull cypress/included:3.2.0
   script:
-    - docker run  cypresstest
+    - docker run -d  cypresstest
+    - sleep 5
     - docker run  -v $(pwd):/e2e -w /e2e cypress/included:3.2.0
