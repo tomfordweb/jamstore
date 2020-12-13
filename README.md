@@ -23,7 +23,8 @@ docker run -p 8000:8000 <image>
 ## Unit tests
 
 ```
-docker run <image> run test
+docker run <image> test
+docker run -v $(pwd)/:/app test -- --watchAll
 ```
 
 ## Cypress Tests
