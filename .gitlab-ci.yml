@@ -1,10 +1,3 @@
-.deploy_to_surge: &deployToSurge
-  cache: {}
-  before_script:
-    - npm install --global surge
-  script:
-    - surge --project ./dist --domain $DOMAIN
-
 image: node
 
 cache:
@@ -15,7 +8,7 @@ cache:
 stages:
   - prep
   - build
-  - deploy_master
+  - deploy master
   - test
 
 before_script:
@@ -58,13 +51,14 @@ cypress tests:
   script:
     - docker run -d -p $APP_PORT:$APP_PORT --network $TESTING_NETWORK --ip=$TESTING_IP cypresstest
     - sleep 5
-    - docker run -v $(pwd):/e2e -w /e2e --network $TESTING_NETWORK cypress/included:3.2.0
+    - docker run -v $(pwd):/e2e -w /e3e --network $TESTING_NETWORK cypress/included:3.2.0
 
 deploy master:
-  <<: &deployToSurge
+  cache: {}
   variables:
     DOMAIN: jamstore-master.surge.sh
-  stage: deploy_master
-  image: node
+  stage: deploy master
   before_script:
-    - ''
+    - npm install --global surge
+  script:
+    - surge --project ./dist --domain $DOMAIN
