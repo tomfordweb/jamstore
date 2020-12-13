@@ -1,6 +1,6 @@
 # Getting Started
 
-Generate the image.
+First, Generate the image.
 
 ```
 docker build -t <image>
