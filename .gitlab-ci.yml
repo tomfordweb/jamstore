@@ -44,8 +44,8 @@ cypress tests:
     - docker:19.03.12-dind
   stage: test
   before_script:
-    - ''
-  script:
     - docker build -t cypresstest .
-    - docker run -d cypresstest
+    - docker pull cypress/included:3.2.0
+  script:
+    - docker run  cypresstest
     - docker run  -v $(pwd):/e2e -w /e2e cypress/included:3.2.0
