@@ -4,6 +4,6 @@ COPY . ./
 RUN npm install
 RUN npm run generate 
 EXPOSE 8000 
-ENTRYPOINT ["npm"]
+ENTRYPOINT ["npm", "run"]
 CMD ["start"]
 
