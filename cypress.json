@@ -1,3 +1,3 @@
 {
-  "baseUrl": "http://%%CYPRESS_DOMAIN%%:%%CYPRESS_PORT%%"
+  "baseUrl": "http://%%TESTING_DOMAIN%%:%%TESTING_PORT%%"
 }
