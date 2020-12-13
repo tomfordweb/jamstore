@@ -17,7 +17,7 @@ build app:
   stage: build
   script:
     - sed -i "s/%%TESTING_DOMAIN%%/$TESTING_IP/" ./cypress.json
-    - sed -i "s/%%TESTING_PORT%%/$APP_PORT" ./cypress.json
+    - sed -i "s/%%TESTING_PORT%%/$APP_PORT/" ./cypress.json
     - npm run generate
   artifacts:
     paths:
