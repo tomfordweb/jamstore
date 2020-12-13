@@ -1,3 +1,6 @@
+# Created by .ignore support plugin (hsz.mobi)
+### Node template
+# Logs
 /logs
 *.log
 npm-debug.log*
@@ -73,9 +76,18 @@ dist
 
 # Serverless directories
 .serverless
+
+# IDE / Editor
 .idea
+
+# Service worker
 sw.*
+
+# macOS
 .DS_Store
+
+# Vim swap files
 *.swp
+
 cypress/videos
-cypress/screenshots
+cypres/screenshots
