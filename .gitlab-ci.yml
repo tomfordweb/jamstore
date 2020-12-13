@@ -16,28 +16,33 @@ before_script:
 build the app:
   stage: build
   script:
+    - sed -i 's/%CYPRESS_DOMAIN%/$CYPRESS_DOMAIN/' ./cypress.json
+    - sed -i 's/%CYPRESS_PORT%/$CYPRESS_PORT/' ./cypress.json
+    - cat ./cypress.json
     - npm run generate
   artifacts:
     paths:
       - ./dist
+      - ./cypress.json
+
+test the artifact:
+  image: alpine
+  stage: test
+  script:
+    - grep -q $CYPRESS_DOMAIN ./cypress.json
+    - grep -q $CYPRESS_PORT ./cypress.json
 
 unit tests:
   stage: test
   script:
     - npm run test
 
-
 cypress tests:
   image: docker:19.03.12
   services:
     - docker:19.03.12-dind
-  before_script:
-    - ''
   stage: test
   script:
-    - sed -i 's/%CYPRESS_DOMAIN%/$CYPRESS_DOMAIN/' ./cypress.json
-    - sed -i 's/%CYPRESS_PORT%/$CYPRESS_PORT/' ./cypress.json
     - docker build -t cypresstest .
     - docker run -d cypresstest
     - docker run  -v $(pwd):/e2e -w /e2e cypress/included:3.2.0
-
