@@ -48,6 +48,6 @@ cypress tests:
     - docker pull cypress/included:3.2.0
     - docker network create --subnet=$TESTING_SUBNET $TESTING_NETWORK
   script:
-    - docker run -d -p $TESTING_PORT:$TESTING_PORT --network $TESTING_NETWORK --ip=$TESTING_IP cypresstest
+    - docker run -d -p $APP_PORT:$APP_PORT --network $TESTING_NETWORK --ip=$TESTING_IP cypresstest
     - sleep 5
     - docker run -v $(pwd):/e2e -w /e2e --network $TESTING_NETWORK cypress/included:3.2.0
