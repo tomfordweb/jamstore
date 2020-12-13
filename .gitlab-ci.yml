@@ -16,8 +16,10 @@ before_script:
 build the app:
   stage: build
   script:
-    - sed -i 's/%CYPRESS_DOMAIN%/$CYPRESS_DOMAIN/' ./cypress.json
-    - sed -i 's/%CYPRESS_PORT%/$CYPRESS_PORT/' ./cypress.json
+    - sed -i "s/%%CYPRESS_DOMAIN%%/$CYPRESS_DOMAIN/" ./cypress.json
+    - sed -i "s/%%CYPRESS_PORT%%/$CYPRESS_PORT/" ./cypress.json
+    - grep -q $CYPRESS_DOMAIN ./cypress.json
+    - grep -q $CYPRESS_PORT ./cypress.json
     - cat ./cypress.json
     - npm run generate
   artifacts:
@@ -31,8 +33,7 @@ test the artifact:
   before_script:
     - ''
   script:
-    - grep -q $CYPRESS_DOMAIN ./cypress.json
-    - grep -q $CYPRESS_PORT ./cypress.json
+    - ''
 
 unit tests:
   stage: test
