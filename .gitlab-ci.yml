@@ -28,6 +28,8 @@ build the app:
 test the artifact:
   image: alpine
   stage: test
+  before_script:
+    - ''
   script:
     - grep -q $CYPRESS_DOMAIN ./cypress.json
     - grep -q $CYPRESS_PORT ./cypress.json
@@ -42,6 +44,8 @@ cypress tests:
   services:
     - docker:19.03.12-dind
   stage: test
+  before_script:
+    - ''
   script:
     - docker build -t cypresstest .
     - docker run -d cypresstest
