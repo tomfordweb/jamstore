@@ -35,10 +35,12 @@ Cypress Tests are a little trickier. You must create a network to allow the cont
 The subnet, and IP address you assign to the app are arbritrary, but need to exist.
 
 ```
-docker network create --subnet=192.168.2.0/16 <network>
-docker run --network <network> --ip 192.168.2.4 <image>
+docker network create  <network>
+docker run --network <network> --name <hostname-for-cypress> <image>
 docker run --network <network> -v $(pwd):/e2e -w /e2e cypress/included:3.2.0
 ```
+
+Any test output is saved to the cypress directory.
 
 # CI/CD Notes
 

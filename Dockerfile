@@ -1,7 +1,7 @@
-FROM node:current-alpine
+FROM node:15.4.0-buster
 WORKDIR /app
 COPY . ./
-RUN npm install
+RUN npm install --verbose
 RUN npm run generate 
 EXPOSE 8000 
 ENTRYPOINT ["npm", "run"]
