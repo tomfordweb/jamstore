@@ -2,6 +2,13 @@ export default {
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
 
+  publicRuntimeConfig: {
+    appTitle: '%%APP_NAME%%',
+    routes: {
+      store: 'shop',
+      blog: 'blog',
+    },
+  },
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
     title: 'jamstore',

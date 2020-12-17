@@ -3,7 +3,7 @@
 First, Generate the image.
 
 ```
-docker build -t <image>
+docker build -t <image> .
 ```
 
 ## Development Build (hot reloading)

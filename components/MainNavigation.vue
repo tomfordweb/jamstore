@@ -10,14 +10,16 @@
 
 <script>
 export default {
-  data: () => ({
-    links: [
-      { text: 'Home', url: '/' },
-      {
-        text: 'Blog',
-        url: '/blog',
-      },
-    ],
-  }),
+  data: function () {
+    return {
+      links: [
+        { text: 'Home', url: '/' },
+        {
+          text: 'Blog',
+          url: `/${this.$config.routes.blog}`,
+        },
+      ],
+    }
+  },
 }
 </script>

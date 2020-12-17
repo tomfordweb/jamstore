@@ -10,7 +10,7 @@ stages:
   - test
   - deploy master
 
-build cypress config:
+build  config:
   stage: build
   image: alpine
   only:
@@ -31,8 +31,7 @@ build app:
   before_script:
     - npm ci --cache .npm --prefer-offline
   script:
-    - sed -i "s/%%TESTING_DOMAIN%%/$TESTING_IP/" ./cypress.json
-    - sed -i "s/%%TESTING_PORT%%/$APP_PORT/" ./cypress.json
+    - sed -i "s/%%APP_NAME%%/$APP_NICE_NAME/" ./nuxt.config.js
     - npm run generate
   artifacts:
     paths:

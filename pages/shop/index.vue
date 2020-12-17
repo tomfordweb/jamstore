@@ -1,10 +1,10 @@
 <template>
   <section>
-    <h1>Blog</h1>
+    <h1>Store</h1>
     <article-excerpt
-      v-for="article of articles"
-      v-bind:article="article"
-      :key="article.id"
+      v-for="product of products"
+      v-bind:product="product"
+      :key="product.id"
     />
   </section>
 </template>
@@ -14,9 +14,9 @@ import ArticleExcerpt from '../../components/ArticleExcerpt.vue'
 export default {
   components: { ArticleExcerpt },
   async asyncData({ $content, route }) {
-    const articles = await $content('articles').fetch()
+    const products = await $content('products').fetch()
     return {
-      articles,
+      products,
     }
   },
 }

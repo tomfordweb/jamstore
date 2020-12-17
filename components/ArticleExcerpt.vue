@@ -3,7 +3,9 @@
     <section v-if="article">
       <header>
         <h1>
-          <NuxtLink :to="`/blog/${article.slug}`">{{ article.title }}</NuxtLink>
+          <NuxtLink :to="`/${$config.routes.blog}/${article.slug}`">{{
+            article.title
+          }}</NuxtLink>
         </h1>
       </header>
       <article>{{ article.description }}</article>
