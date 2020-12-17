@@ -1,9 +1,9 @@
 import * as cypressConfig from '../../cypress.json'
-
+import * as appConfig from '../../nuxt.config'
 describe('Homepage', () => {
-  it('Renders the homepage title', () => {
+  it('the logo is the app name', () => {
     cy.visit('/')
-    cy.get('.title').contains('jamstore')
+    cy.get('#logo').should('contain', appConfig.publicRuntimeConfig.appTitle)
   })
 
   it('renders the link to the blog', () => {
