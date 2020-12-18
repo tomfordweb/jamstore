@@ -1,6 +1,6 @@
 <template>
   <section>
-    <breadcrumbs v-if="article" v-bind:crumbs="breadcrumbs" />
+    <navigation class="navigation" v-if="article" v-bind:links="breadcrumbs" />
     <app-title>{{ article.title }}</app-title>
     <article class="post-body">
       <nuxt-content :document="article" />
@@ -9,10 +9,10 @@
 </template>
 
 <script>
-import Breadcrumbs from '~/components/Breadcrumbs.vue'
 import AppTitle from '~/components/AppTitle.vue'
+import Navigation from '../../../components/Navigation.vue'
 export default {
-  components: { Breadcrumbs, AppTitle },
+  components: { AppTitle, Navigation },
   computed: {
     breadcrumbs() {
       console.log('article', this.article.title)
@@ -20,16 +20,16 @@ export default {
         ? []
         : [
             {
-              link: '/',
-              title: 'Home',
+              url: '/',
+              text: 'Home',
             },
             {
-              link: '/blog',
-              title: 'Blog',
+              url: '/blog',
+              text: 'Blog',
             },
             {
-              link: `/blog/${this.article.slug}`,
-              title: this.article.title,
+              url: `/blog/${this.article.slug}`,
+              text: this.article.title,
             },
           ]
     },

@@ -1,5 +1,6 @@
 ---
 title: Article 1
+featured: true
 ---
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas interdum velit bibendum augue condimentum, sit amet vulputate magna fermentum. Vestibulum eget eros urna. Aenean rhoncus nunc eget lectus blandit rhoncus. Proin pellentesque tortor et dui gravida, at ullamcorper ligula aliquam. Curabitur aliquet ipsum eu metus rhoncus suscipit. Suspendisse consectetur sapien felis, quis aliquet augue interdum non. Mauris luctus lacus eros, vitae bibendum odio gravida in. Sed at neque sit amet dolor tempor ornare quis vitae odio. Cras ullamcorper iaculis neque, sit amet vestibulum nulla interdum tincidunt. Donec justo tortor, tincidunt et nibh vel, convallis congue magna. Sed facilisis, orci ut euismod viverra, felis nisl venenatis magna, id vehicula nulla nisi non libero. Ut tincidunt vel odio eu accumsan. Aenean lacinia varius ultrices. Quisque finibus, mi sollicitudin imperdiet aliquam, leo magna dignissim quam, scelerisque tempor magna justo eget lacus.
