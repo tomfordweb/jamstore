@@ -1,5 +1,8 @@
 ---
 title: Product 1
+categories:
+  - kitchen
+  - bedroom
 images:
   - src: https://via.placeholder.com/150/0000FF/808080
     alt: 'some alt text'

@@ -66,7 +66,6 @@ cypress tests:
     - docker:18.06-dind
   stage: test
   before_script:
-    - cp ./cypress/ci/integration-test.md ./content/articles/integration-test.md
     - docker build -t cypresstest .
     - docker pull cypress/included:3.2.0
     - docker network create $TESTING_NETWORK

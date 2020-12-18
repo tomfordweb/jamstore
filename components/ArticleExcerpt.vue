@@ -15,8 +15,5 @@
 <script>
 export default {
   props: ['article'],
-  mounted() {
-    console.log(this.article)
-  },
 }
 </script>

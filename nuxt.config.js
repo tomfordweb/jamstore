@@ -4,6 +4,9 @@ export default {
 
   publicRuntimeConfig: {
     appTitle: '%%APP_NAME%%',
+    homepageProductCardLimit: 3,
+    navigation: {},
+
     routes: {
       store: 'shop',
       blog: 'blog',

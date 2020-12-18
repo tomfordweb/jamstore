@@ -1,6 +1,9 @@
 <template>
   <section>
-    <h1>Store</h1>
+    <h1>{{ !!category ? category.title : $route.params.category }}</h1>
+    <article v-if="category">
+      <nuxt-content :document="category" />
+    </article>
     <navigation v-bind:links="categoryNames" />
     <section class="products">
       <product-card
@@ -13,22 +16,37 @@
 </template>
 
 <script>
-import ArticleExcerpt from '../../components/ArticleExcerpt.vue'
+import ArticleExcerpt from '~/components/ArticleExcerpt.vue'
 import extractContentCategories from '~/lib/extractContentCategories.js'
-import Navigation from '../../components/Navigation.vue'
+import Navigation from '../../../components/Navigation.vue'
 export default {
   components: { ArticleExcerpt },
   computed: {
+    routeCategoryName: function () {},
     categoryNames: function () {
       return extractContentCategories(this.categories)
     },
   },
   async asyncData({ $content, route }) {
-    const products = await $content('products').where().fetch()
+    const products = await $content('products')
+      .where({
+        categories: {
+          $contains: route.params.category,
+        },
+      })
+      .fetch()
+    let category = null
+    try {
+      category = await $content(
+        'product_categories',
+        route.params.category
+      ).fetch()
+    } catch (error) {}
     const categories = await $content('products').only(['categories']).fetch()
     return {
       products,
       categories,
+      category,
     }
   },
 }

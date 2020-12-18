@@ -17,9 +17,12 @@
 
 <script>
 export default {
-  async asyncData({ $content, route }) {
+  async asyncData({ $content, route, $config }) {
     const jumbotronText = await $content('pages/home').fetch()
-    const homepageProducts = await $content('products').fetch()
+    const homepageProducts = await $content('products')
+      .where({ featured: { $eq: true } })
+      .limit($config.homepageProductCardLimit)
+      .fetch()
     return {
       jumbotronText,
       homepageProducts,
